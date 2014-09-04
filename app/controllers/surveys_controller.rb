@@ -21,6 +21,27 @@ class SurveysController < ApplicationController
 		@survey = Survey.find(params[:id])
 	end
 
+	def edit
+		@survey = Survey.find(params[:id])
+	end
+
+	def update
+		@survey = Survey.find(params[:id])
+
+		if @survey.update(article_params)
+			redirect_to @survey
+		else
+			render 'edit'
+		end
+	end
+
+	def destroy
+		@survey = Survey.find(params[:id])
+		@survey.destroy
+
+		redirect_to surveys_path
+	end
+
 	private
 		def article_params
 			params.require(:survey).permit(:title, :description)
