@@ -1,0 +1,16 @@
+<h1>All Surveys</h1>
+ 
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Link</th>
+  </tr>
+  <% @surveys.each do |survey| %>
+  	<tr>
+  		<td><%= survey.title %></td>
+  		<td><%= survey.description %></td>
+  		<td><%= link_to 'View', survey_path(survey) %></td>
+  	</tr>
+  <% end %>
+</table>
