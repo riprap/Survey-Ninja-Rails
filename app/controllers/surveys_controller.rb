@@ -2,15 +2,19 @@ class SurveysController < ApplicationController
 	def index
 		@surveys = Survey.all
 	end
-	
+
 	def new
+		@survey = Survey.new
 	end
 
 	def create
 		@survey = Survey.new(article_params) 
 		
-		@survey.save
-		redirect_to @survey
+		if @survey.save
+			redirect_to @survey
+		else
+			render 'new'
+		end
 	end
 
 	def show
