@@ -8,7 +8,7 @@ class SurveysController < ApplicationController
 	end
 
 	def create
-		@survey = Survey.new(article_params) 
+		@survey = Survey.new(survey_params) 
 		
 		if @survey.save
 			redirect_to @survey
@@ -23,6 +23,7 @@ class SurveysController < ApplicationController
 
 	def edit
 		@survey = Survey.find(params[:id])
+		@question_types_array = QuestionType.all.map {|question_type| [question_type.name, question_type.id]}
 	end
 
 	def update
@@ -43,7 +44,7 @@ class SurveysController < ApplicationController
 	end
 
 	private
-		def article_params
+		def survey_params
 			params.require(:survey).permit(:title, :description)
 		end
 end

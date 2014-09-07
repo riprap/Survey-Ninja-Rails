@@ -7,4 +7,17 @@
 	<%= @survey.description %>
 </p>
 
-<%= link_to 'Back', surveys_path %> | <%= link_to 'Edit', edit_survey_path(@survey) %>
+<p>
+	<strong>Questions</strong> <%= link_to 'Add', new_survey_question_path(@survey) %>
+	<ul>
+		<% @survey.questions.each do |question| %>
+			<li>
+				<%= question.text %>
+				| <%= link_to 'Edit', edit_survey_question_path(@survey, question) %>
+			</li>
+		<% end %>
+	</ul>
+</p>
+
+
+<%= link_to 'Back', surveys_path %> | <%= link_to 'Edit Survey', edit_survey_path(@survey) %>
