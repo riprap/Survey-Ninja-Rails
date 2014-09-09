@@ -1,5 +1,6 @@
 class Survey < ActiveRecord::Base
 	has_many :questions
+	belongs_to :user
 	#validates_associated :questions
 	
 	validates :title, presence: true,
