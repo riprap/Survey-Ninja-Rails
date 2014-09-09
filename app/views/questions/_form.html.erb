@@ -15,6 +15,10 @@
 		<%= f.label :text %>
 		<%= f.text_area :text %>
 	</p>
-
+	<p>
+		<%= f.label 'Question Type: ' %>
+ 		<%= options_from_collection_for_select(QuestionType.all, :id, :name) %>
+		</select>
+	</p>
 	<%= f.submit %>
 <% end %>
