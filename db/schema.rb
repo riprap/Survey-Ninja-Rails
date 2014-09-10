@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140909233949) do
+ActiveRecord::Schema.define(version: 20140910000432) do
 
   create_table "question_types", force: true do |t|
     t.string   "name"
@@ -24,9 +24,10 @@ ActiveRecord::Schema.define(version: 20140909233949) do
     t.integer  "survey_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "question"
+    t.integer  "question_type_id"
   end
 
+  add_index "questions", ["question_type_id"], name: "index_questions_on_question_type_id"
   add_index "questions", ["survey_id"], name: "index_questions_on_survey_id"
 
   create_table "surveys", force: true do |t|
