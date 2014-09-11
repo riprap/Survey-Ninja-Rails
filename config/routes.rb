@@ -1,4 +1,4 @@
-Rails.application.routes.draw do
+SurveyNinjaRails::Application.routes.draw do
   resources :users
 
   resources :surveys do
